@@ -4,16 +4,14 @@ import { Button } from "@workspace/ui/components/button"
 import { useMutation, useQuery } from "convex/react";
 import { api } from "@workspace/backend/_generated/api"
 import { Authenticated, Unauthenticated } from "convex/react";
-import { SignInButton, UserButton } from "@clerk/nextjs";
+import { OrganizationSwitcher, SignInButton, UserButton } from "@clerk/nextjs";
 import { FcGoogle } from "react-icons/fc";
 import UserTag from "@/components/UserTag/UserTag";
 import { useUser } from "@clerk/nextjs";
-import Image from "next/image";
 
 export default function Page() {
   const users = useQuery(api.users.getMany);
   const addUser = useMutation(api.users.add);
-  const { isSignedIn, user } = useUser();
   return (
     <>
       <Authenticated>
@@ -21,6 +19,7 @@ export default function Page() {
           <div className="flex flex-col items-center justify-center gap-4">
             <h1 className="text-2xl font-bold">Hello World From the Web</h1>
             <UserTag />
+            <OrganizationSwitcher hidePersonal={true} />
             <p className="text-lg text-center">
               {JSON.stringify(users)}
             </p>
