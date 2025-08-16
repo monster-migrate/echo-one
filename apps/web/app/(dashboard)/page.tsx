@@ -20,9 +20,9 @@ export default function Page() {
             <h1 className="text-2xl font-bold">Hello World From the Web</h1>
             <UserTag />
             <OrganizationSwitcher hidePersonal={true} />
-            <p className="text-lg text-center">
+            {/* <p className="text-lg text-center">
               {JSON.stringify(users)}
-            </p>
+            </p> */}
             <Button onClick={() => addUser()}>Add</Button>
           </div>
         </div>
